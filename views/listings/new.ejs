@@ -1,0 +1,120 @@
+<% layout('/layouts/bolierplate.ejs') -%>
+<body>
+  <div class="row mt-3">
+    <div class="col-8 offset-2">
+      <br></br>
+    <h3 class="mb-4">Create a New Listing</h3>
+    <form method="POST" action="/listings" novalidate class="needs-validation"
+    
+     >
+     <!-- enctype="multipart/form-data" -->
+       
+      <!-- Title Field -->
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input 
+          id="title"
+          name="listing[title]" 
+          placeholder=" Add a catchy title" 
+          type="text" 
+          class="form-control" 
+          required
+        />
+        <div class="valid-feedback">Title looks good!</div>
+      </div>
+
+      <!-- Description Field -->
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea 
+          id="description"
+          name="listing[description]" 
+          placeholder="Enter description" 
+          class="form-control" 
+          rows="4"
+          type="text"  
+          required
+        ></textarea>
+        <div class="invalid-feedback"> Enter the short description</div>
+      </div>
+
+      
+<!-- Image Link Field -->
+
+<div class="mb-3">
+  <label for="image" class="form-label">Image Link</label>
+  <input 
+    id="image"
+    name="listing[imageUrl]"  
+    placeholder="Enter image URL/Link" 
+    type="text" 
+    class="form-control" 
+    required
+  />
+</div>
+
+
+<!-- image file upload method isko baad me thik karu ga -->
+<!-- <div class="mb-3">
+  <label for="image" class="form-label">Upload Listing Image </label>
+  <input 
+    id="image"
+    name="listing[imageUrl]"  
+    type="file" 
+    class="form-control" 
+    required
+  />
+</div> -->
+
+      <div class="row">
+      <!-- Price Field -->
+      <div class="mb-3 col-md-4">
+        <label for="price" class="form-label">Price</label>
+        <input 
+          id="price"
+          name="listing[price]" 
+          placeholder="1200" 
+          type="number" 
+          class="form-control" 
+          step="0.01" 
+          min="0" 
+          required
+        />
+        <div class="invalid-feedback"> price should be valid</div>
+      </div>
+
+      <!-- Country Field -->
+      <div class="mb-3 col-md-8">
+        <label for="country" class="form-label">Country</label>
+        <input 
+          id="country"
+          name="listing[country]" 
+          placeholder="India" 
+          type="text" 
+          class="form-control" 
+          required
+        />
+        <div class="invalid-feedback"> country name should valid</div>
+      </div>
+    </div>
+      <!-- Location Field -->
+      <div class="mb-3">
+        <label for="location" class="form-label">Location</label>
+        <input 
+          id="location"
+          name="listing[location]" 
+          placeholder=" Rohani ,Delhi" 
+          type="text" 
+          class="form-control" 
+          required
+        />
+        <div class="invalid-feedback">Enter the valid location</div>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="btn btn-dark add-btn mt-3">Add</button>
+    
+    </form>
+  </div>
+</div>
+</body>
