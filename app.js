@@ -124,9 +124,11 @@ app.use("/" , reviews)
 app.use("/" , user);
 
 
-app.use((err, req , res ,next) => {
-    res.send("Something want wrong!")
-})
+app.use((err, req, res, next) => {
+  console.error("ERROR:", err);
+  res.status(500).send("Something went wrong! Check logs for details.");
+});
+
 
 // Server
 app.listen(8080, () => {
