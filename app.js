@@ -8,6 +8,7 @@ const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 const {reviewSchema } = require("./schema.js");
 const session = require("express-session");
+const MongoStore = require('connect-mongo');
 const flash = require("connect-flash");
 const passport = require("passport");
 const passportLocal = require("passport-local");
@@ -44,8 +45,21 @@ async function main() {
   await mongoose.connect(dbUrl);
 }
 
+const store = MongoStore.create({
+  mongoUrl: dbUrl,
+  crypto: {
+    secret: "mysupersecretcode"
+  },
+  touchAfter: 24* 3600,
+});
+
+store.on("error" , () => {
+  console.log("ERROR IN MONGO SESSION STORE" , err);
+})
+
 // session
 const sessionOptions = {
+  store,
   secret: "mysupersecretcode",
   resave: false,
   saveUninitialized: true,
