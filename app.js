@@ -15,6 +15,8 @@ const flash = require("connect-flash");
 const passport = require("passport");
 const passportLocal = require("passport-local");
 const User = require("./models/user.js");
+const Listing = require("./models/listing");
+
 
 
 
@@ -78,6 +80,18 @@ const sessionOptions = {
 // app.get("/", (req, res) => {
 //   res.send("HI, I am root");
 // });
+
+app.get("/", async (req, res) => {
+  try {
+      const allListings = await Listing.find(); // Fetch listings from MongoDB
+      res.render("index", { allListings });
+  } catch (err) {
+      console.error("Error fetching listings:", err);
+      res.render("index", { allListings: [] }); // Render page even if there's an error
+  }
+});
+
+
 
 
 app.use(session(sessionOptions));
