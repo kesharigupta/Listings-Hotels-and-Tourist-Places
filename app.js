@@ -84,10 +84,10 @@ const sessionOptions = {
 app.get("/", async (req, res) => {
   try {
       const allListings = await Listing.find(); // Fetch listings from MongoDB
-      res.render("index", { allListings });
+      res.render("listings/index", { allListings });  // ✅ Correct path
   } catch (err) {
       console.error("Error fetching listings:", err);
-      res.render("index", { allListings: [] }); // Render page even if there's an error
+      res.render("listings/index", { allListings: [] }); // ✅ Correct path
   }
 });
 
